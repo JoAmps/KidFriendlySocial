@@ -1,0 +1,6 @@
+root - INFO - SUCCESS! : Data Succesfully loaded, tweets cleaned and there are 142219 number of rows
+root - INFO - SUCCESS! : Labels successfully encoded and label 1 contains 61.448189060533394 % and label 0 contains 38.5518109394666%
+root - INFO - SUCCESS! : Dataset split succesfully and there 113775 train examples, 14222 validation examples and 14222 test examples
+root - INFO - SUCCESS! : Data Loaders created successfully
+root - INFO - Success! : Data successfully trained
+root - INFO - SUCCESS! Evaluation completed
