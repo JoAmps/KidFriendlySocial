@@ -15,11 +15,6 @@ load_dotenv()
 server = Flask(__name__)
 mysql = MySQL(server)
 server.secret_key = os.environ["SECRET"]
-# server.config["MYSQL_HOST"] = os.environ.get("MYSQL_HOST")
-# server.config["MYSQL_USER"] = os.environ.get("MYSQL_USER")
-# server.config["MYSQL_PASSWORD"] = os.environ.get("MYSQL_PASSWORD")
-# server.config["MYSQL_DB"] = os.environ.get("MYSQL_DB")
-# server.config["MYSQL_PORT"] = int(os.environ.get("MYSQL_PORT"))
 server.config["MYSQL_HOST"] = 'localhost'
 server.config["MYSQL_USER"] = 'root'
 server.config["MYSQL_PASSWORD"] = ''
