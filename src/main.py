@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, url_for, session, jsonify, flash
+from flask import Flask, request, render_template, redirect, url_for, session, jsonify
 from flask_mysqldb import MySQL
 from authentication_service.tokens import AccessTokens
 from dotenv import load_dotenv
@@ -102,25 +102,22 @@ def login():
             session['loggedin'] = True
             session['id'] = id
             session['email'] = email
-            
+
             # If email is correct and passwords match
             if email and bcrypt.checkpw(password.encode('utf-8'),
                                         hashed_password.encode('utf-8')):
                 token = AccessTokens.generate_access_token(
                     email, os.environ.get("SECRET"), True)
                 session['token'] = token
-                #msg = f"Welcome {email}, you have succesfully logged in"
-                #return jsonify({'token':token})
                 return redirect(url_for('inference'))
             # if not
             else:
-                return jsonify({"error":"invalid credentials"})
+                return jsonify({"error": "invalid credentials"})
 
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
     return render_template('index.html', msg=msg)
-
 
 
 @server.route('/logout')
@@ -149,7 +146,7 @@ def token_required(f):
         try:
             data = AccessTokens.decode_access_token(token, os.environ.get("SECRET"))
             current_user = data['email']
-        except:
+        except BaseException:
             return jsonify({'message': 'Token is invalid!'}), 401
 
         return f(current_user, *args, **kwargs)
@@ -158,10 +155,8 @@ def token_required(f):
 
 
 @server.route("/inference", methods=["GET", "POST"])
-#@token_required 
 def inference():
     if request.method == 'POST':
-        #return redirect(url_for('login'))
         tweet = request.form["tweet"]
         labels = ["good/normal language", "bad language"]
         bad_language_detection_pipeline = load_model_and_tokenizer(
@@ -186,22 +181,19 @@ def inference():
             result_class = "bad"
             flag = True
             return render_template('predict.html', tweet=tweet, prediction=prediction,
-                                recommendations=recommendations, result_class=result_class,flag=flag)
+                                   recommendations=recommendations, result_class=result_class, flag=flag)
         else:
             prediction = f"Tweet contains {labels[0]}, \
             go ahead to tweet this"
             prediction = prediction.replace('  ', '')
             result_class = "good"
             flag = True
-            return render_template('predict.html', tweet=tweet, prediction=prediction, result_class=result_class,flag=flag)
-                                                                   
+            return render_template('predict.html', tweet=tweet, prediction=prediction, result_class=result_class, flag=flag)
     else:
         return render_template('predict.html')
 
 
-
 @server.route('/feedback', methods=['POST'])
-#@require_token
 def feedback():
     if request.method == 'POST':
         if 'token' not in session:
@@ -212,10 +204,9 @@ def feedback():
         prediction = prediction[15:27]
         cursor = mysql.connection.cursor()
         cursor.execute('INSERT INTO feedbacks VALUES (NULL, %s, %s, %s)',
-                    (text, prediction, feedback ))
+                       (text, prediction, feedback))
         mysql.connection.commit()
         message = 'You have successfully given the feedback, Thanks!'
-        #return redirect(url_for('inference'), msg=msg)
         return render_template('predict.html', message=message)
 
 
