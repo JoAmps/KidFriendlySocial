@@ -1,0 +1,6 @@
+/src/ML_model/Predictive_model/data/data/*
+/src/ML_model/Predictive_model/logs/*
+#/src/ML_model/Predictive_model/model/trained_models/*
+/src/client-service/.env
+/src/ML_model/Generative_model/.env
+/src/.env
