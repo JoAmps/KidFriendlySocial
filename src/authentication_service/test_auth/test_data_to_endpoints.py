@@ -45,5 +45,3 @@ def test_registeration_incorrect_email_format(client):
     user = {"email": "user1xys", "password": "user1"}
     response = client.post('/register', headers=headers, data=json.dumps(user))
     assert response.get_data(as_text=True) == 'Invalid email address!'
-
-

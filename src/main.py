@@ -17,6 +17,5 @@ server.config["MYSQL_DB"] = os.environ["MYSQL_DB"]
 server.config["MYSQL_PORT"] = 25060
 
 
-
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=5050, debug=True)

@@ -1,4 +1,5 @@
-from flask import request, render_template, redirect, url_for, session, Blueprint
+from dotenv import load_dotenv
+from flask import request, render_template, Blueprint
 import time
 from ML_model.Generative_model.generate import (
     generate_recommendations,
@@ -9,14 +10,8 @@ from ML_model.Predictive_model.predict import (
 )
 import warnings
 warnings.filterwarnings("ignore")
-from dotenv import load_dotenv
-
 load_dotenv()
-ml_bp = Blueprint('ml_bp', __name__,template_folder='templates',static_folder='static')
-#import sys
-#sys.path.insert(1, '.')
-#from mains import mysql
-
+ml_bp = Blueprint('ml_bp', __name__, template_folder='templates', static_folder='static')
 
 
 @ml_bp.route("/inference", methods=["GET", "POST"])
@@ -56,5 +51,3 @@ def inference():
             return render_template('predict.html', tweet=tweet, prediction=prediction, result_class=result_class, flag=flag)
     else:
         return render_template('predict.html')
-    
-

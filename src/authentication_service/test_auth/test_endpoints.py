@@ -2,6 +2,7 @@ import pytest
 from api import server
 import json
 
+
 @pytest.fixture
 def client():
     with server.test_client() as client:
@@ -35,4 +36,3 @@ def test_login_endpoint(client):
 def test_any_other_endpoint_not_work(client):
     response = client.get('/predict')
     assert response.status_code != 200
-

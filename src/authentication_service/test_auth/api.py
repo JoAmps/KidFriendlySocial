@@ -1,3 +1,4 @@
+from tokens import AccessTokens
 import os
 from flask import Flask, request, session
 from flask_mysqldb import MySQL
@@ -6,7 +7,6 @@ import bcrypt
 import re
 import warnings
 warnings.filterwarnings("ignore")
-from tokens import AccessTokens
 
 
 load_dotenv()
