@@ -1,0 +1,4 @@
+[core]
+    remote = model_store
+['remote "model_store"']
+    url = s3://twitter-for-kids/models_dvc/
