@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM --platform=linux/x86_64 python:3.10-slim-bullseye as build
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends --no-install-suggests \

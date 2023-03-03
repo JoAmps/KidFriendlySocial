@@ -1,25 +1,23 @@
 import os
 from flask import Flask, request, session
 from flask_mysqldb import MySQL
-from authentication_service.tokens import AccessTokens
 from dotenv import load_dotenv
 import bcrypt
 import re
 import warnings
-
 warnings.filterwarnings("ignore")
+from tokens import AccessTokens
 
 
 load_dotenv()
-
 server = Flask(__name__)
 mysql = MySQL(server)
 server.secret_key = os.environ["SECRET"]
-server.config["MYSQL_HOST"] = 'localhost'
-server.config["MYSQL_USER"] = 'root'
-server.config["MYSQL_PASSWORD"] = ''
-server.config["MYSQL_DB"] = 'authentication'
-server.config["MYSQL_PORT"] = 3306
+server.config["MYSQL_HOST"] = os.environ["MYSQL_HOST"]
+server.config["MYSQL_USER"] = os.environ["MYSQL_USER"]
+server.config["MYSQL_PASSWORD"] = os.environ["MYSQL_PASSWORD"]
+server.config["MYSQL_DB"] = os.environ["MYSQL_DB"]
+server.config["MYSQL_PORT"] = 25060
 
 
 @server.route('/register', methods=['POST'])

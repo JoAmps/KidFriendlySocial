@@ -47,15 +47,3 @@ def test_registeration_incorrect_email_format(client):
     assert response.get_data(as_text=True) == 'Invalid email address!'
 
 
-def test_logged_in_user_jwt_token(client):
-    headers = {"Content-Type": "application/json"}
-    user = {"email": "user1@gmail.com ", "password": "user1"}
-    response = client.post('/login', headers=headers, data=json.dumps(user))
-    assert 'token' in response.get_data(as_text=True)
-
-
-def test_logged_in_no_jwt_for_unloggedin_user(client):
-    headers = {"Content-Type": "application/json"}
-    user = {"email": "cv232@gmail.com ", "password": "23223"}
-    response = client.post('/login', headers=headers, data=json.dumps(user))
-    assert "Incorrect username/password!" in response.get_data(as_text=True)

@@ -66,7 +66,7 @@ jobs:
         run: |
          pip install pytest==7.2.1
          pip install bcrypt==4.0.1
-         cd src
+         cd src/authentication_service/test_auth
          pytest -s -v test_data_to_endpoints.py test_endpoints.py  --disable-warnings 
 
 

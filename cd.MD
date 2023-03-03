@@ -49,3 +49,8 @@ stage('Clone repository') {
             }
         }
 
+
+src/
+├── mains.py
+    └── authenticaion_service
+        └── auth_routes.py

@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: app-configmap
 data:
-  MYSQL_HOST: host.minikube.internal
-  MYSQL_USER: root
-  MYSQL_DB: authentication
-  MYSQL_PORT: "3306"
+  MYSQL_HOST: 'kidfriendlyapp-do-user-13668442-0.b.db.ondigitalocean.com'
+  MYSQL_USER: 'doadmin'
+  MYSQL_DB: 'kidfriendlysocial'
+  MYSQL_PORT: "25060"

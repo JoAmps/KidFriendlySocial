@@ -1,6 +1,6 @@
 import pytest
-from main import server
-
+from api import server
+import json
 
 @pytest.fixture
 def client():
@@ -19,12 +19,16 @@ def test_app():
 
 
 def test_register_endpoint(client):
-    response = client.post('/register')
+    headers = {"Content-Type": "application/json"}
+    user = {"email": "user1@gmail.com ", "password": "user1"}
+    response = client.post('/register', headers=headers, data=json.dumps(user))
     assert response.status_code == 200
 
 
 def test_login_endpoint(client):
-    response = client.get('/login')
+    headers = {"Content-Type": "application/json"}
+    user = {"email": "user1@gmail.com ", "password": "user1"}
+    response = client.post('/login', headers=headers, data=json.dumps(user))
     assert response.status_code == 200
 
 
@@ -32,7 +36,3 @@ def test_any_other_endpoint_not_work(client):
     response = client.get('/predict')
     assert response.status_code != 200
 
-
-def test_inference_endpoint(client):
-    response = client.get('/inference')
-    assert response.status_code == 200

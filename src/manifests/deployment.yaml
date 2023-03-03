@@ -22,7 +22,8 @@ spec:
     spec:
       containers:
         - name: app
-          image: joamps/app:latest
+          image: registry.digitalocean.com/kidfriendlysocial/app:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5050 
           envFrom:
