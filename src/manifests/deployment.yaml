@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
-  annotations:
-    configmap.reloader.stakater.com/reload: "console-config"
   labels:
     app: app
 spec:
@@ -27,8 +25,15 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5050 
+          resources:
+            requests:
+              cpu: "32m"
+              memory: "512Mi"
+            limits:
+              cpu: "32m"
+              memory: "512Mi"
           envFrom:
             - configMapRef:
                 name: app-configmap
             - secretRef:
-                name: app-secret
+                name: app-secret     

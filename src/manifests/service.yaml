@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: app
-  type: NodePort  
+  type: LoadBalancer  
   ports:
   - port: 5050
     targetPort: 5050

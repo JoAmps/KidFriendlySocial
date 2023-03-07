@@ -1,5 +1,3 @@
-import sys
-from main import mysql
 import os
 from flask import request, render_template, redirect, url_for, session, jsonify, Blueprint
 from authentication_service.tokens import AccessTokens
@@ -9,7 +7,9 @@ import re
 from functools import wraps
 auth_bp = Blueprint('auth_bp', __name__, template_folder='templates', static_folder='static')
 load_dotenv()
+import sys
 sys.path.insert(1, '.')
+from main import mysql
 
 
 @auth_bp.route('/')
