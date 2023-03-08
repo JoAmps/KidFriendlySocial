@@ -14,7 +14,7 @@ server.config["MYSQL_HOST"] = os.environ["MYSQL_HOST"]
 server.config["MYSQL_USER"] = os.environ["MYSQL_USER"]
 server.config["MYSQL_PASSWORD"] = os.environ["MYSQL_PASSWORD"]
 server.config["MYSQL_DB"] = os.environ["MYSQL_DB"]
-server.config["MYSQL_PORT"] = 3306
+server.config["MYSQL_PORT"] = 25060
 
 
 if __name__ == "__main__":
