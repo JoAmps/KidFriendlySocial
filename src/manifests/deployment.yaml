@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: app
@@ -27,11 +27,11 @@ spec:
             - containerPort: 5050 
           resources:
             requests:
-              cpu: "32m"
-              memory: "512Mi"
+              cpu: "64m"
+              memory: "1Gi"
             limits:
-              cpu: "32m"
-              memory: "512Mi"
+              cpu: "512m"
+              memory: "2Gi"
           envFrom:
             - configMapRef:
                 name: app-configmap
