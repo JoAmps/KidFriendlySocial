@@ -27,3 +27,16 @@ Moreover, the recommendations aspect is particularly useful, as it helps childre
 * Version Control: Git for code version control and DVC for data and model version control
 * Testing: Pytest for unit and integration testing
 * Monitoring: Prometheus for monitoring metrics and Grafana for visualizing them
+
+# Project Description(Technical)
+The model was built using the state-of-the-art natural language processing algorithm, DistilRoberta, to detect and classify bad language content. The app also leverages OpenAI's GPT-3 to generate recommendations for users to improve their tweets when bad language is detected.
+
+The application was built using Flask, a lightweight Python web framework, and containerized using Docker to ensure that it can be deployed easily on any infrastructure. The app is hosted on DigitalOcean Kubernetes, a highly scalable and efficient platform that can handle a large volume of traffic. The application is also monitored using Prometheus and Grafana to ensure optimal performance, and all data is stored and managed in a MYSQL database also hosted on digital ocean
+
+KidFriendlySocial also incorporates several MLOps best practices, including version control of models and data, continuous integration and continuous deployment (CI/CD), and automated testing. The project follows the agile methodology, allowing for continuous feedback and improvement.
+
+Overall, KidFriendlySocial provides a valuable service to users who want to ensure that their tweets are appropriate for children, by leveraging cutting-edge machine learning algorithms and best practices in software engineering, the application is highly scalable, efficient, and reliable.
+
+# Results
+## Analytics
+Firstly, wanted to see the most common unique words that appeared in tweets that contain bad language:
