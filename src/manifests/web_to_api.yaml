@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-web-to-api
+spec:
+  podSelector:
+    matchLabels:
+      app: app
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: app
