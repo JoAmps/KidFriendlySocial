@@ -39,4 +39,28 @@ Overall, KidFriendlySocial provides a valuable service to users who want to ensu
 
 # Results
 ## Analytics
-Firstly, wanted to see the most common unique words that appeared in tweets that contain bad language:
+Firstly, wanted to see the most common unique words(unigram) that appeared in tweets that contain bad language:
+![common words](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Common%20words.png)
+As an be seen there are some words that are more general such as want, human etc, these are included here because they were used in contexts of tweets that are not kid appropriate but the words themselves are appropriate but the words that are strictly for bad language can be seen in there such as fuck, stupid, niggers etc.
+
+Also, it was ideal to visualize a word cloud of tweet that contain good language and ones that contain bad language, to see how different they are:
+![word cloud](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Word%20cloud.png)
+As can be seen above, there is a clear difference in the good and bad language tweets, which is useful for us to differentiate and build a model to try and classify tweets according to this.
+
+
+## Model building and Evaluation
+### Predictive Model
+The distil Roberta model which has been pretrained on a huge corpus of tweets(model name: vinai/bertweet-base) was used as the base model of choice for training, because the model already understands how tweets are constructed so it can easily generalize to our tweets, and also since its a distil roberta model, its a smaller model that still has excellent accuracy, and most importantly, its smaller in size, so it trains faster and the inference speed(latency speed) is smaller. 4 metrics were used ( accuracy, recall, precision and f1), but the most important metric here is precision, as the key is to minimize false positives(the situation where the tweet contains bad language but the model predicts it to contain good language). Its okay to allow flag some good language as negative, but its not good to allow bad language to get out there, so reducing this situation(higher precision) is the most important here. Below are the metrics obtained:
+
+#### accuracy: 0.949936717761215 
+#### precision: 0.9477199286616215 
+#### recall: 0.9464880338247377 
+#### f1: 0.9470952154920613
+
+The performance seems good, with the precision being almost 95%, which suggests the model does well in catching bad language tweets. To visualize all these metrics, the confusion matrix was used, the result is below here:
+![confusion matrix](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/confusion_matrix.png)
+As can be seen, a lot of bad language tweets were correctly predicted with only 376 out of 5483(false positives) incorrectly predicted, also for good language tweets, only 336 were wrongly predicted as being bad language tweets. This shows the model would be robust in predicting if a tweet contains bad language or good language
+
+### Generative Model
+GPT3 was used for generating the recommendations when bad language is detected, the temperature(how random the generations should be) was set to 0.8, the max length to 256, to allow users to express themselves more, text davicni 003 which was the most advanced model at the time of building was used, and an excellent prompt written to generate the recommendations. The GPT3 was finetuned using 150 tweets of bad language-good language pairs to enable the model to understand the context a little better to generate relevant recommendations
+
