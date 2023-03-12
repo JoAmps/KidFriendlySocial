@@ -1,5 +1,5 @@
 # Project Name
-### KidFriendlySocial: Making social media safe amd fun for kids
+### KidFriendlySocial: Making social media safe and fun for kids!
 ![logo](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/logo.png)
 # Project Intro/Objective
 With the rise of social media use among younger generations, it is important to ensure that the content they are exposed to is appropriate and free from harmful language.
