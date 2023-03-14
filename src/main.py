@@ -1,6 +1,6 @@
 from flask import Flask
 from ML_model.ml_routes import ml_bp
-from authentication_service.auth_routes import auth_bp
+from auth_routes import auth_bp
 from flask_mysqldb import MySQL
 import os
 
