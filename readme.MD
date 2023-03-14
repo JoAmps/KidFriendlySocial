@@ -47,6 +47,8 @@ Also, it was ideal to visualize a word cloud of tweet that contain good language
 ![word cloud](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Word%20cloud.png)
 As can be seen above, there is a clear difference in the good and bad language tweets, which is useful for us to differentiate and build a model to try and classify tweets according to this.
 
+# Data
+The data for this project was obtained from two dictinct sources, firstly from available datasets on the internet, and from data extracted from the twitter api. The data available on the internet was cleaned and put into a format that is usable, and it was already labelled, whiles i used doccana, an opne source data labelling platform to label all the data extracted from the twitter api.
 
 ## Model building and Evaluation
 ### Predictive Model
@@ -59,10 +61,16 @@ The distil Roberta model which has been pretrained on a huge corpus of tweets(mo
 
 The performance seems good, with the precision being almost 95%, which suggests the model does well in catching bad language tweets. To visualize all these metrics, the confusion matrix was used, the result is below here:
 ![confusion matrix](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/confusion_matrix.png)
-As can be seen, a lot of bad language tweets were correctly predicted with only 376 out of 5483(false positives) incorrectly predicted, also for good language tweets, only 336 were wrongly predicted as being bad language tweets. This shows the model would be robust in predicting if a tweet contains bad language or good language. They key here is to try to reduce the 376 false positives to capture more bad language tweets.
+As can be seen, a lot of bad language tweets were correctly predicted with only 376 out of 5483(false positives) incorrectly predicted, also for good language tweets, only 336 were wrongly predicted as being bad language tweets. This shows the model would be robust in predicting if a tweet contains bad language or good language. They key here is to try to reduce the 376 false positives to capture more bad language tweets, as thats the one we are most interested in predicting.
 
 ### Generative Model
 GPT3 was used for generating the recommendations when bad language is detected, the temperature(how random the generations should be) was set to 0.8, the max length to 256, to allow users to express themselves more, text davicni 003 which was the most advanced model at the time of building was used, and an excellent prompt written to generate the recommendations. The GPT3 was finetuned using 150 tweets of bad language-good language pairs to enable the model to understand the context a little better to generate relevant recommendations.
 
 
+# Model in Production
+### Deployment
+The model was deployed using docker and kubernetes and hosted on digital ocean. The authentications(signup, login) was written using flask, and jwt authentication used to authenticate users to use the app.  The app was made available to 20 users for a week, to interact with the app, in order to get feedback on how to improve the app, and also to use their feedback to score the performance of the model and improve the model.
+
+### WebApp Demo
+Below is a demo of how the app works. PS: i had to take the app down, since it costs money to host the app on digital ocean(the docker containers, the kubernetes clusters and the mysql database).
 
