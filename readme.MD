@@ -73,4 +73,8 @@ The model was deployed using docker and kubernetes and hosted on digital ocean. 
 
 ### WebApp Demo
 Below is a demo of how the app works. PS: i had to take the app down, since it costs money to host the app on digital ocean(the docker containers, the kubernetes clusters and the mysql database).
+Demo of model predicting good language:
+![good language](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/good_language_demo.gif)
+Demo of model predicting bad language:
+![bad language](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Bad_language_demo.gif)
 
