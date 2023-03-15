@@ -103,5 +103,5 @@ We may also explore different models or fine-tune our existing models to improve
 
 #### Integration with Other Social Media Platforms
 Finally, we may consider integrating KidFriendlySocial with other social media platforms beyond Twitter. This could include popular platforms such as Facebook, Instagram, or TikTok, allowing us to expand our reach and provide even more comprehensive language filtering and recommendation services.
-
+#### and many more that cannot be said here
 #### These are just a few examples of the potential future directions for KidFriendlySocial. By continuing to develop and improve this tool, we can work towards a safer and more positive online environment for kids and young people. 
