@@ -16,7 +16,7 @@ Moreover, the recommendations aspect is particularly useful, as it helps childre
 * Backend development : Python for building the whole backend application
 * Microservices: Used to separate the functionality of the application into smaller, more modular components, improving scalability and maintainability.
 * Frontend development : HTML and CSS for the frontend
-* Machine learning models: Distil-Roberta for bad language detection and GPT-3 for generating recommendations
+* NLP models: Distil-Roberta for bad language detection and GPT-3 for generating recommendations
 * Deep learning : Pytorch framework for building the NLP deep learning model
 * Web framework: Flask for building the web application
 * APIs : Twitter api to obtain real time data 
