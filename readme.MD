@@ -69,7 +69,7 @@ GPT3 was used for generating the recommendations when bad language is detected, 
 
 # Model in Production
 ### Deployment
-The model was deployed using docker and kubernetes and hosted on digital ocean. The authentications(signup, login) was written using flask, and jwt authentication used to authenticate users to use the app.  The app was made available to 20 users for a week, to interact with the app, in order to get feedback on how to improve the app, and also to use their feedback to score the performance of the model and improve the model.
+The model was deployed using docker and kubernetes and hosted on digital ocean. The authentications(signup, login) was written using flask, and jwt authentication used to authenticate users to use the app and all the passwords hashed using bcrypt to protect user privacy.  The app was made available to 20 diverse users for a week, to interact with the app, in order to get feedback on how to improve the app, and also to use their feedback to score the performance of the model and improve the model.
 
 ### WebApp Demo
 Below is a demo of how the app works. PS: i had to take the app down, since it costs money to host the app on digital ocean(the docker containers, the kubernetes clusters and the mysql database).
@@ -77,4 +77,30 @@ Demo of model predicting good language:
 ![good language](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/good_language_demo.gif)
 Demo of model predicting bad language:
 ![bad language](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Bad_language_demo.gif)
+As can be seen in the demos, the good language prediction is straight forward, the focus is on detecting the bad language, the model correctly detects that the tweet contains bad language that is not useful for kids, and generates appropriates recommendations for them to use to improve their tweets, so in the demo, the actual tweet was : 
+* "piss off, you f**king b***ch, get the hell of here", 
+#### and the generated recommendations were : 
+* "Go away, you awful person, get out of here"
+* "Go away, you meanie, scram!"
+* "Beat it, you nasty individual, leave now!"
+#### As can be seen the recommendations contain the same meaning and context as the original tweet, but it is a more kidfriendly version and contains no bad language, which is what we seek to accomplish.
 
+
+### Monitoring
+
+# Future Work
+
+#### Browser Extension
+One potential avenue for future development is to incorporate KidFriendlySocial as a browser extension. This would allow users to easily flag inappropriate language and receive recommendations for kid-friendly alternatives while browsing Twitter or other social media platforms. By integrating KidFriendlySocial directly into the user's browser, we can provide a more seamless and user-friendly experience.
+
+#### Integration with Twitter
+Another possible direction for future work is to integrate KidFriendlySocial directly into Twitter. This could take the form of a built-in language filter, which would automatically flag tweets containing inappropriate language and offer users suggestions for rephrasing their tweets. By partnering with Twitter, we can potentially reach a much larger audience and make a greater impact in promoting online safety for kids.
+
+#### Refinement of Data and Machine Learning Models 
+As with any machine learning model, there is always room for improvement. In future iterations of KidFriendlySocial, we would gather a lot of more diverse data that captures a lot of bad language and even in other languages in order to detect bad language no matter how its put out. One way is to keep rolling out the app to differnet and more diverse users and capturing their feedback and using it to add to training data.
+We may also explore different models or fine-tune our existing models to improve their accuracy and reliability. This could involve experimenting with different transformer models.
+
+#### Integration with Other Social Media Platforms
+Finally, we may consider integrating KidFriendlySocial with other social media platforms beyond Twitter. This could include popular platforms such as Facebook, Instagram, or TikTok, allowing us to expand our reach and provide even more comprehensive language filtering and recommendation services.
+
+#### These are just a few examples of the potential future directions for KidFriendlySocial. By continuing to develop and improve this tool, we can work towards a safer and more positive online environment for kids and young people. 
