@@ -111,8 +111,8 @@ Finally, we may consider integrating KidFriendlySocial with other social media p
 #### These are just a few examples of the potential future directions for KidFriendlySocial. By continuing to develop and improve this tool, we can work towards a safer and more positive online environment for kids and young people. 
 
 # Conclusion
-KidFriendlySocial is a web application that aims to make social media safer and more child-friendly. By using machine learning models(NLP), web technologies, container technologies and cloud hosting, we were able to create an application that can detect and flag inappropriate content and provide recommendations to improve the language used in social media posts.
+KidFriendlySocial is a web application that aims to make social media safer and more child-friendly. By using machine learning models(NLP), web technologies, container technologies and cloud hosting, we were able to create an application that can detect and flag bad languagest and provide recommendations to improve the language used in social media posts.
 
-In the future, we plan to expand KidFriendlySocial by incorporating it as a browser extension and integrating it into popular social media platforms. We also plan to enhance the application by adding more advanced features such as timeline analysis and deeper analysis of social media content.
+In the future, we plan to expand KidFriendlySocial by incorporating it as a browser extension and integrating it into popular social media platforms. We also plan to enhance the application by reducing latency speed and inference speed, obtaining and improving the dataset and adding a few more very useful features.
 
 We hope that KidFriendlySocial can help parents and guardians feel more at ease with their children's social media usage and contribute to a safer and more positive online community.
