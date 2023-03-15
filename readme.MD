@@ -38,6 +38,9 @@ KidFriendlySocial also incorporates several MLOps best practices, including vers
 
 Overall, KidFriendlySocial provides a valuable service to users who want to ensure that their tweets are appropriate for children, by leveraging cutting-edge machine learning algorithms and best practices in software engineering, the application is highly scalable, efficient, and reliable.
 
+# Data
+The data for this project was obtained from two dictinct sources, firstly from available datasets on the internet, and from data extracted from the twitter api. The data available on the internet was cleaned and put into a format that is usable, and it was already labelled, whiles i used doccana, an opne source data labelling platform to label all the data extracted from the twitter api.
+
 # Results
 ## Analytics
 Firstly, wanted to see the most common unique words(unigram) that appeared in tweets that contain bad language:
@@ -48,8 +51,6 @@ Also, it was ideal to visualize a word cloud of tweet that contain good language
 ![word cloud](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Word%20cloud.png)
 As can be seen above, there is a clear difference in the good and bad language tweets, which is useful for us to differentiate and build a model to try and classify tweets according to this.
 
-# Data
-The data for this project was obtained from two dictinct sources, firstly from available datasets on the internet, and from data extracted from the twitter api. The data available on the internet was cleaned and put into a format that is usable, and it was already labelled, whiles i used doccana, an opne source data labelling platform to label all the data extracted from the twitter api.
 
 ## Model building and Evaluation
 ### Predictive Model
@@ -90,8 +91,6 @@ As can be seen in the demos, the good language prediction is straight forward, t
 ### Monitoring
 
 
-# Conclusion
-
 
 # Future Work
 
@@ -111,7 +110,7 @@ Finally, we may consider integrating KidFriendlySocial with other social media p
 #### These are just a few examples of the potential future directions for KidFriendlySocial. By continuing to develop and improve this tool, we can work towards a safer and more positive online environment for kids and young people. 
 
 # Conclusion
-KidFriendlySocial is a web application that aims to make social media safer and more child-friendly. By using machine learning models(NLP), web technologies, container technologies and cloud hosting, we were able to create an application that can detect and flag bad languagest and provide recommendations to improve the language used in social media posts.
+KidFriendlySocial is a web application that aims to make social media safer and more child-friendly. By using machine learning models(NLP), web technologies, container technologies and cloud hosting, we were able to create a minimal viable product(MVP) application that can detect and flag bad languages and provide recommendations to improve the language used in social media posts.
 
 In the future, we plan to expand KidFriendlySocial by incorporating it as a browser extension and integrating it into popular social media platforms. We also plan to enhance the application by reducing latency speed and inference speed, obtaining and improving the dataset and adding a few more very useful features.
 
