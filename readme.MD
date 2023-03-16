@@ -39,11 +39,15 @@ KidFriendlySocial also incorporates several MLOps best practices, including vers
 Overall, KidFriendlySocial provides a valuable service to users who want to ensure that their tweets are appropriate for children, by leveraging cutting-edge machine learning algorithms and best practices in software engineering, the application is highly scalable, efficient, and reliable.
 
 # Data
-The data for this project was obtained from two dictinct sources, firstly from available datasets on the internet, and from data extracted from the twitter api. The data available on the internet was cleaned and put into a format that is usable, and it was already labelled, whiles i used doccana, an open source data labelling platform to label all the data extracted from the twitter api.
+### Dataset
+The data for this project was obtained from two distinct sources, firstly from available datasets on the internet, and from data extracted from the twitter api. The data available on the internet was cleaned and put into a format that is usable, and it was already labelled, whiles i used doccana, an open source data labelling platform to label all the data extracted from the twitter api.
 The data from twitter api is very relevant in order to obtain latest data from twitter to use to train the data.
 An example of the way i used doccana to label the dataset is shown below:
 
 ![doccana_labelling](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/data%20labelling.jpg)
+
+### Database
+Relational databse, MYSQL,  is the database of choice to store all user details related to authentications and user feedbacks in order to score the model in production and also to add actual tweets from users to use as training data to improve the model in the next version. The MYSQL database was hosted on digital ocean to ensure high availability.
 
 # Results
 ## Analytics
