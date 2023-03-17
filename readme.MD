@@ -114,10 +114,15 @@ Another possible direction for future work is to integrate KidFriendlySocial dir
 As with any machine learning model, there is always room for improvement. In future iterations of KidFriendlySocial, we would gather a lot of more diverse data that captures a lot of bad language and even in other languages in order to detect bad language no matter how its put out. One way is to keep rolling out the app to differnet and more diverse users and capturing their feedback and using it to add to training data.
 We may also explore different models or fine-tune our existing models to improve their accuracy and reliability. This could involve experimenting with different transformer models. Also, reducing the inference and latency speed of the predictions by employing techniques such as quantization and weight pruning to deliver quick results to users
 
+#### Multilingual Support
+One potential avenue for future development is to incorporate multilingual support into KidFriendlySocial. This would allow the application to flag and recommend improvements for potentially harmful tweets posted in languages other than English. By expanding the language capabilities of the app, we can make it more accessible to a wider range of users and help protect children on social media platforms beyond English-speaking ones.
+
 #### Integration with Other Social Media Platforms
 Finally, we may consider integrating KidFriendlySocial with other social media platforms beyond Twitter. This could include popular platforms such as Facebook, Instagram, or TikTok, allowing us to expand our reach and provide even more comprehensive language filtering and recommendation services.
 #### and many more that cannot be said here(for obvious reasons)
-#### These are just a few examples of the potential future directions for KidFriendlySocial. By continuing to develop and improve this tool, we can work towards a safer and more positive online environment for kids and young people. 
+#### These are just a few examples of the potential future directions for KidFriendlySocial. By continuing to develop and improve this tool, we can work towards a safer and more positive online environment for kids and young people.
+
+
 
 # Conclusion
 KidFriendlySocial is a web application that aims to make social media safer and more child-friendly. By using machine learning models(NLP), web technologies, container technologies and cloud hosting, we were able to create a minimal viable product(MVP) application that can detect and flag bad languages and provide recommendations to improve the language used in social media posts.
