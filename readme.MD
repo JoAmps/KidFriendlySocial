@@ -62,16 +62,16 @@ As can be seen above, there is a clear difference in the good and bad language t
 
 ## Model building and Evaluation
 ### Predictive Model
-The distil Roberta model which has been pretrained on a huge corpus of tweets(model name: vinai/bertweet-base) was used as the base model of choice for training, because the model already understands how tweets are constructed so it can easily generalize to our tweets, and also since its a distil roberta model, its a smaller model that still has excellent accuracy, and most importantly, its smaller in size, so it trains faster and the inference speed(latency speed) is smaller. 4 metrics were used ( accuracy, recall, precision and f1), but the most important metric here is precision, as the key is to minimize false positives(the situation where the tweet contains bad language but the model predicts it to contain good language). Its okay to allow flag some good language as negative, but its not good to allow bad language to get out there, so reducing this situation(higher precision) is the most important here. Below are the metrics obtained:
+The distil Roberta model which has been pretrained on a huge corpus of tweets(model name: vinai/bertweet-base) was used as the base model of choice for training, because the model already understands how tweets are constructed so it can easily generalize to our tweets, and also since its a distil roberta model, its a smaller model that still has excellent accuracy, and most importantly, its smaller in size, so it trains faster and the inference speed(latency speed) is smaller. 4 metrics were used ( accuracy, recall, precision and f1), but the most important metric here is recall, as the key is to identify as many potentially bad language tweets as possible to protect children. Here, the focus is on minimizing false negatives(the situation where the tweet contains bad language but the model predicts it to contain good language). Its okay to allow flag some good language as negative, but its not good to allow bad language to get out there, so reducing this situation(higher recall) is the most important here. However, precision is also important to ensure that the recommendations provided by the application are accurate and trustworthy.  Below are the metrics obtained:
 
 #### accuracy: 0.949936717761215 
 #### precision: 0.9477199286616215 
 #### recall: 0.9464880338247377 
 #### f1: 0.9470952154920613
 
-The performance seems good, with the precision being almost 95%, which suggests the model does well in catching bad language tweets. To visualize all these metrics, the confusion matrix was used, the result is below here:
+The performance seems good, with the recall being almost 95%, which suggests the model does well in catching bad language tweets. To visualize all these metrics, the confusion matrix was used, the result is below here:
 ![confusion matrix](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/confusion_matrix.png)
-As can be seen, a lot of bad language tweets were correctly predicted with only 376 out of 5483(false positives) incorrectly predicted, also for good language tweets, only 336 were wrongly predicted as being bad language tweets. This shows the model would be robust in predicting if a tweet contains bad language or good language. They key here is to try to reduce the 376 false positives to capture more bad language tweets, as thats the one we are most interested in predicting.
+As can be seen, a lot of bad language tweets were correctly predicted with only 376 out of 5483(false negatives) incorrectly predicted, also for good language tweets, only 336 were wrongly predicted as being bad language tweets. This shows the model would be robust in predicting if a tweet contains bad language or good language. They key here is to try to reduce the 376 false negatives to capture more bad language tweets, as thats the one we are most interested in predicting.
 
 ### Generative Model
 GPT3 was used for generating the recommendations when bad language is detected, the temperature(how random the generations should be) was set to 0.8, the max length to 256, to allow users to express themselves more, text davicni 003 which was the most advanced model at the time of building was used, and an excellent prompt written to generate the recommendations. The GPT3 was finetuned using 150 tweets of bad language-good language pairs to enable the model to understand the context a little better to generate relevant recommendations.
@@ -81,7 +81,7 @@ Pytest was used for performing all the tests in this project for both unit tests
 
 # Model in Production
 ### Deployment
-The model was deployed using docker and kubernetes and hosted on digital ocean. The authentications(signup, login) was written using flask, and jwt authentication used to authenticate users to use the app and all the passwords hashed using bcrypt to protect user privacy.  The app was made available to 20 diverse users for a week, to interact with the app, in order to get feedback on how to improve the app, and also to use their feedback to score the performance of the model and improve the model.
+The model was deployed using docker and kubernetes and hosted on digital ocean. The authentications(signup, login) was written using flask, and jwt authentication used to authenticate users to use the app and all the passwords hashed using bcrypt to protect user privacy.  The app was made available to 11 diverse users for a week, to interact with the app, in order to get feedback on how to improve the app, and also to use their feedback to score the performance of the model and improve the model.
 
 ### WebApp Demo
 Below is a demo of how the app works. PS: i had to take the app down, since it costs money to host the app on digital ocean(the docker containers, the kubernetes clusters and the mysql database).
@@ -101,7 +101,7 @@ As can be seen in the demos, the good language prediction is straight forward, t
 ### Monitoring
 The performance of the model and the system was monitored using Prometheus and grafana and digital ocean internal monotring tool. System metrics such as server response time, CPU and memory metrics were monitored using digital ocean internal monitoring tool, and the model metrics monitored using Promethues and Grafana. 
 
-The performance of the model was based on user feedback, as they are the ones the app is for, so their feedback is the most important to know how well the model is doing. These were the metrics monitored:
+The performance of the model was based on user feedback, as they are the ones the app is for, so their feedback is the most important to know how well the model is doing. As already explained, the app was made available to 11 unique individuals to use who performed 43 predictions, and these were the metrics monitored:
 
 * Total number of feedbacks received: This can give an indication of the overall engagement with the app.
 
@@ -118,10 +118,9 @@ The performance of the model was based on user feedback, as they are the ones th
 * Percentage of correct good/normal language predictions: This gives a more accurate representation of the model's effectiveness, taking into account the total number of good/normal language predictions.
 Image below shows the monitoring of the model in production:
 ![monitoring](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/monitoring%20and%20alerting.png)
-The model so far is very good at predicting bad languages, with only one instance where a tweet contained good language was predicted to contain abd language. This is where we are most interested in, catching all bad languages so bad tweets arent sent out there for kids to consume.
-Good language tweets scored a little worse, even though our focus isnt solely on that, an improvement in that aspect is required. Because recall is the most important here, that is what was monitored.
-
-For alerts, we set the threshold of bad language tweets to be 92%, which means when the performance of bad language is below 92%, an alert is made, and appropriate action is performed.
+The model so far is very good at predicting bad languages, with only one instance where a tweet contained good language was predicted to contain bad language. This is where we are most interested in, catching all bad languages so bad tweets arent sent out there for kids to consume, as can be seen with the 95.2% performance of the model.
+Good language tweets scored a little worse, even though our focus isnt solely on that, an improvement in that aspect is required. Because recall is the most important here, that is what was monitored. 
+This is the way model monitoring is done so far to keep track of the metrics of the model as users are interacting with the app, to get a sense of how the model is doing, and if the performance starts declining, appropriate measures are taken.
 
 
 # Future Work
