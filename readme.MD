@@ -99,8 +99,29 @@ As can be seen in the demos, the good language prediction is straight forward, t
 
 
 ### Monitoring
-The performance of the model and the system was monitored using Prometheus and grafana and digital ocean internal monotring tool. System metrics such as server response time, CPU and memory metrics were monitored using digital ocean internal monitoring tool, and the model metrics monitored using Promethues and Grafana.
+The performance of the model and the system was monitored using Prometheus and grafana and digital ocean internal monotring tool. System metrics such as server response time, CPU and memory metrics were monitored using digital ocean internal monitoring tool, and the model metrics monitored using Promethues and Grafana. 
 
+The performance of the model was based on user feedback, as they are the ones the app is for, so their feedback is the most important to know how well the model is doing. These were the metrics monitored:
+
+* Total number of feedbacks received: This can give an indication of the overall engagement with the app.
+
+* Number of feedbacks categorized as bad language: This helps to track the frequency of bad language .
+
+* Number of correct bad language predictions: This shows how effective the model is at identifying bad language.
+
+* Percentage of correct bad language predictions: This gives a more accurate representation of the model's effectiveness, taking into account the total number of bad language predictions.
+
+* Number of feedbacks categorized as good/normal language: This helps to understand the overall capacity of the model to determine good language
+
+* Number of correct good/normal language predictions: This can show how effective the model is at identifying appropriate language.
+
+* Percentage of correct good/normal language predictions: This gives a more accurate representation of the model's effectiveness, taking into account the total number of good/normal language predictions.
+Image below shows the monitoring of the model in production:
+![monitoring](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/monitoring%20and%20alerting.png)
+The model so far is very good at predicting bad languages, with only one instance where a tweet contained good language was predicted to contain abd language. This is where we are most interested in, catching all bad languages so bad tweets arent sent out there for kids to consume.
+Good language tweets scored a little worse, even though our focus isnt solely on that, an improvement in that aspect is required. Because recall is the most important here, that is what was monitored.
+
+For alerts, we set the threshold of bad language tweets to be 92%, which means when the performance of bad language is below 92%, an alert is made, and appropriate action is performed.
 
 
 # Future Work
