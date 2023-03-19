@@ -53,20 +53,20 @@ jobs:
          pytest -s -v test_data.py test_inferences.py  --disable-warnings
 
 
-      #- name: Start MySQL service and check status
-      #  run: |
-      #   sudo service mysql start
-      #   sudo service mysql status
+      - name: Start MySQL service and check status
+        run: |
+         sudo service mysql start
+         sudo service mysql status
 
 
-      #- name: Run Unit and Integration Tests on endpoints and data to endpoints
-      #  env:
-      #    SECRET : ${{ secrets.SECRET }}
-      #    OPEN_API_KEY : ${{ secrets.OPEN_API_KEY }}
-      #  run: |
-      #   pip install pytest==7.2.1
-      #   pip install bcrypt==4.0.1
-      #   cd src/authentication_service/test_auth
-      #   pytest -s -v test_data_to_endpoints.py test_endpoints.py  --disable-warnings 
+      - name: Run Unit and Integration Tests on endpoints and data to endpoints
+        env:
+          SECRET : ${{ secrets.SECRET }}
+          OPEN_API_KEY : ${{ secrets.OPEN_API_KEY }}
+        run: |
+         pip install pytest==7.2.1
+         pip install bcrypt==4.0.1
+         cd src/authentication_service/test_auth
+         pytest -s -v test_data_to_endpoints.py test_endpoints.py  --disable-warnings 
 
 
