@@ -99,6 +99,7 @@ As can be seen in the demos, the good language prediction is straight forward, t
 
 
 ### Monitoring
+The performance of the model and the system was monitored using Prometheus and grafana and digital ocean internal monotring tool. System metrics such as server response time, CPU and memory metrics were monitored using digital ocean internal monitoring tool, and the model metrics monitored using Promethues and Grafana.
 
 
 
