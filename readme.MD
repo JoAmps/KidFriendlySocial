@@ -89,7 +89,11 @@ Demo of model predicting good language:
 ![good language](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/good_language_demo.gif)
 Demo of model predicting bad language:
 ![bad language](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/Bad_language_demo.gif)
-As can be seen in the demos, the good language prediction is straight forward, the focus is on detecting the bad language, the model correctly detects that the tweet contains bad language that is not useful for kids, and generates appropriates recommendations for them to use to improve their tweets, so in the demo, the actual tweet was : 
+
+As can be seen in the demos, the good language prediction is straight forward, the focus is on detecting the bad language, the model correctly detects that the tweet contains bad language that is not useful for kids, and generates appropriates recommendations for them to use to improve their tweets.
+
+![recommendations](https://github.com/JoAmps/KidFriendlySocial/blob/main/src/images/recommendations.png)
+The image above shows the recommendations generated, when bad language is detected, so in the demo, the actual tweet was : 
 * "piss off, you f**king b***ch, get the hell of here", 
 #### and the generated recommendations were : 
 * "Go away, you awful person, get out of here"
